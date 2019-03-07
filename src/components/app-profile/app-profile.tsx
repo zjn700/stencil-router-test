@@ -1,47 +1,45 @@
-import { Component, Prop, State } from '@stencil/core';
-import { sayHello } from '../../helpers/utils';
+// import { Component, Prop } from '@stencil/core';
+import { Component, Prop } from '@stencil/core';
+import { MatchResults, RouterHistory } from '@stencil/router';
+
 
 @Component({
   tag: 'app-profile',
   styleUrl: 'app-profile.css'
 })
 export class AppProfile {
+  @Prop() history: RouterHistory;
+  @Prop() match: MatchResults;
+  @Prop() thingOne: string;
+  @Prop() thingTwo: string;
 
-  @State() state = false;
-  @Prop() name: string;
-
-  formattedName(): string {
-    if (this.name) {
-      return this.name.substr(0, 1).toUpperCase() + this.name.substr(1).toLowerCase();
-    }
-    return '';
+  componentDidLoad() {
+    console.log("prof his stat", this.history)
+    // this.thingOne = this.history.location.state.thingOne
+    // this.thingTwo = this.history.location.state.thingTwo
   }
-
   render() {
-    return [
-      <ion-header>
-        <ion-toolbar color="primary">
-          <ion-buttons slot="start">
-            <ion-back-button defaultHref="/" />
-          </ion-buttons>
-          <ion-title>Profile: {this.name}</ion-title>
-        </ion-toolbar>
-      </ion-header>,
+    console.log("prof ", this.match, this.match.params.name)
 
-      <ion-content padding>
-        <p>
-          {sayHello()}! My name is {this.formattedName()}. My name was passed in through a
-          route param!
-        </p>
+    if (this.match && this.match.params.name) {
+      return ([
+        // <ion-page>
+        <ion-header>
+          <ion-toolbar color='primary'>
+            <ion-title>Ionic PWA Toolkit</ion-title>
+          </ion-toolbar>
+        </ion-header>,
 
-        <ion-item>
-          <ion-label>Setting ({this.state.toString()})</ion-label>
-          <ion-toggle
-            checked={this.state}
-            onIonChange={ev => (this.state = ev.detail.checked)}
-          />
-        </ion-item>
-      </ion-content>
-    ];
+        <ion-content padding fullscreen>
+          <p>
+            Hello! My name is {this.match.params.name}.
+            My name was passed in through a route param!
+              And these are my friends, {this.thingOne} and {this.thingTwo}.
+            </p>
+
+        </ion-content>
+        // </ion-page>
+      ]);
+    }
   }
 }

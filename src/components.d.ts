@@ -7,20 +7,38 @@
 
 import '@stencil/core';
 
+import '@stencil/router';
+import '@stencil/state-tunnel';
 import '@ionic/core';
 import 'ionicons';
+import {
+  MatchResults,
+  RouterHistory,
+} from '@stencil/router';
 
 
 export namespace Components {
 
-  interface AppHome {}
-  interface AppHomeAttributes extends StencilHTMLAttributes {}
+  interface AppHome {
+    'docs': any;
+    'history': RouterHistory;
+  }
+  interface AppHomeAttributes extends StencilHTMLAttributes {
+    'docs'?: any;
+    'history'?: RouterHistory;
+  }
 
   interface AppProfile {
-    'name': string;
+    'history': RouterHistory;
+    'match': MatchResults;
+    'thingOne': string;
+    'thingTwo': string;
   }
   interface AppProfileAttributes extends StencilHTMLAttributes {
-    'name'?: string;
+    'history'?: RouterHistory;
+    'match'?: MatchResults;
+    'thingOne'?: string;
+    'thingTwo'?: string;
   }
 
   interface AppRoot {}
