@@ -20,42 +20,86 @@ import {
 export namespace Components {
 
   interface AppHome {
-    'docs': any;
+    'activeTab': string;
+    'fromChild': any;
     'history': RouterHistory;
+    'match': MatchResults;
+    'menuOpen': string;
+    'section': any;
+    'stateValue': any;
   }
   interface AppHomeAttributes extends StencilHTMLAttributes {
-    'docs'?: any;
+    'activeTab'?: string;
+    'fromChild'?: any;
     'history'?: RouterHistory;
+    'match'?: MatchResults;
+    'menuOpen'?: string;
+    'section'?: any;
+    'stateValue'?: any;
+  }
+
+  interface AppTest {
+    'color': string;
+    'loading': boolean;
+    'stateValue': any;
+  }
+  interface AppTestAttributes extends StencilHTMLAttributes {
+    'color'?: string;
+    'loading'?: boolean;
+    'onEmitterTest'?: (event: CustomEvent) => void;
+    'stateValue'?: any;
   }
 
   interface AppProfile {
-    'history': RouterHistory;
-    'match': MatchResults;
-    'thingOne': string;
-    'thingTwo': string;
+    'color': string;
+    'loading': boolean;
+    'stateValue': any;
   }
   interface AppProfileAttributes extends StencilHTMLAttributes {
-    'history'?: RouterHistory;
-    'match'?: MatchResults;
-    'thingOne'?: string;
-    'thingTwo'?: string;
+    'color'?: string;
+    'loading'?: boolean;
+    'onEmitterTest'?: (event: CustomEvent) => void;
+    'stateValue'?: any;
   }
 
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
+
+  interface ZjnMenu {}
+  interface ZjnMenuAttributes extends StencilHTMLAttributes {
+    'onMenuEvent'?: (event: CustomEvent) => void;
+  }
+
+  interface ZjnChild {
+    'color': string;
+    'loading': boolean;
+    'stateValue': any;
+  }
+  interface ZjnChildAttributes extends StencilHTMLAttributes {
+    'color'?: string;
+    'loading'?: boolean;
+    'onEmitterTest'?: (event: CustomEvent) => void;
+    'stateValue'?: any;
+  }
 }
 
 declare global {
   interface StencilElementInterfaces {
     'AppHome': Components.AppHome;
+    'AppTest': Components.AppTest;
     'AppProfile': Components.AppProfile;
     'AppRoot': Components.AppRoot;
+    'ZjnMenu': Components.ZjnMenu;
+    'ZjnChild': Components.ZjnChild;
   }
 
   interface StencilIntrinsicElements {
     'app-home': Components.AppHomeAttributes;
+    'app-test': Components.AppTestAttributes;
     'app-profile': Components.AppProfileAttributes;
     'app-root': Components.AppRootAttributes;
+    'zjn-menu': Components.ZjnMenuAttributes;
+    'zjn-child': Components.ZjnChildAttributes;
   }
 
 
@@ -63,6 +107,12 @@ declare global {
   var HTMLAppHomeElement: {
     prototype: HTMLAppHomeElement;
     new (): HTMLAppHomeElement;
+  };
+
+  interface HTMLAppTestElement extends Components.AppTest, HTMLStencilElement {}
+  var HTMLAppTestElement: {
+    prototype: HTMLAppTestElement;
+    new (): HTMLAppTestElement;
   };
 
   interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {}
@@ -77,16 +127,34 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLZjnMenuElement extends Components.ZjnMenu, HTMLStencilElement {}
+  var HTMLZjnMenuElement: {
+    prototype: HTMLZjnMenuElement;
+    new (): HTMLZjnMenuElement;
+  };
+
+  interface HTMLZjnChildElement extends Components.ZjnChild, HTMLStencilElement {}
+  var HTMLZjnChildElement: {
+    prototype: HTMLZjnChildElement;
+    new (): HTMLZjnChildElement;
+  };
+
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement
+    'app-test': HTMLAppTestElement
     'app-profile': HTMLAppProfileElement
     'app-root': HTMLAppRootElement
+    'zjn-menu': HTMLZjnMenuElement
+    'zjn-child': HTMLZjnChildElement
   }
 
   interface ElementTagNameMap {
     'app-home': HTMLAppHomeElement;
+    'app-test': HTMLAppTestElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'zjn-menu': HTMLZjnMenuElement;
+    'zjn-child': HTMLZjnChildElement;
   }
 
 

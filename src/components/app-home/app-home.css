@@ -1,3 +1,39 @@
 ion-button {
-    cursor: crosshair ;
+    cursor: pointer;
 }
+
+ion-icon {
+    color: white;
+}
+
+ion-title {
+ color: white;
+ padding-top: 10px;
+}
+
+#menu {
+    position: relative;
+    float: left;
+    color: red;
+    /* display:inline-block; */
+    overflow-y: visible;
+
+}
+
+ion-title {
+    position: relative;
+    float: left;
+    
+}
+.modal {
+    /* display: none; Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 70px;
+    width: 100%; /* Full width */
+    height: auto; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(252, 247, 247); /* Fallback color */
+    background-color: rgba(250, 246, 246, 0.9); /* Black w/ opacity */
+  }
