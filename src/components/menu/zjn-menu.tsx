@@ -17,7 +17,8 @@ export class ZjnMenu {
                 <ul class="menu-item">
                     <li id="child" onClick={(event: UIEvent) => this.handleMenuSelection(event)}><ion-icon name="log-in"></ion-icon>Login</li>
                     <li id="profile" onClick={(event: UIEvent) => this.handleMenuSelection(event)}><ion-icon name="person"></ion-icon>Profile</li>
-                    {/* <ion-item-divider>-<ion-label><hr></ion-label></ion-item-divider> */}
+                    <li class="divider"><hr /></li>
+
                     <li id="test" onClick={(event: UIEvent) => this.handleMenuSelection(event)}><ion-icon name="search"></ion-icon>Dictionary</li>
                     <li id="test" onClick={(event: UIEvent) => this.handleMenuSelection(event)}><ion-icon name="list-box"></ion-icon>Phrases</li>
                     <li id="test" onClick={(event: UIEvent) => this.handleMenuSelection(event)}><ion-icon name="construct"></ion-icon>Grammar</li>

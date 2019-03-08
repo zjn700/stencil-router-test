@@ -83,6 +83,13 @@ ion-icon:hover {
     color: inherit
 }
 
+ul li.divider {
+    background-color: unset;
+    color: unset;
+}
+hr{
+ background: black;
+}
 .label{
     float: left;
 }
