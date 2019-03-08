@@ -76,7 +76,9 @@ export class AppHome {
               <ion-icon name="menu"></ion-icon>
             </ion-button>
           </div>
-          <div id="appTitle"> <ion-title>Ionic PWA Toolkit</ion-title></div>
+          <div id="appTitle">hiligaynon</div>
+
+          {/* <div id="appTitle"> <ion-title>hiligaynon</ion-title></div> */}
 
 
           {/* <ion-menu side="start" menu-id="first">

@@ -13,9 +13,14 @@
 
 .menu-item ion-icon {
     color:gray;
-    padding-top: 10px;
+    padding-top: 5px;
     padding-right: 10px;
 }
+
+menu-item:hover {
+    color: white;
+}
+
 ion-img {
     position: absolute;
     top:33%;
@@ -23,13 +28,20 @@ ion-img {
     width:100px;
 }
 
+ion-thumbnail  {     
+    width:100% !important;  
+    height : 100% !important;  
+    max-width: 30px !important; 
+    max-height: 30px !important; 
+    padding-right: 10px;
+    }
+
 .menu-item {
     /* width: 33.33%; */
     width: 100%;
     float: left;
     position: relative; /* <-- added declaration */
 }
-
 
 .menu-item ul {
     margin-top: 5px;
@@ -57,9 +69,26 @@ li {
 
 }
 
+#ask-kim {
+    height: 60px;
+    padding-top: 25px;
+    padding-bottom: 45px;
+}
+
 ul li:hover {
     background-color: rgb(102, 102, 95);
     color:rgb(241, 231, 231);
+}
+ion-icon:hover {
+    color: inherit
+}
+
+.label{
+    float: left;
+}
+
+.menu-item {
+    float: unset;
 }
 
 
