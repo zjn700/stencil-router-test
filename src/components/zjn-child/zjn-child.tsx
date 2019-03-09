@@ -9,18 +9,22 @@ import { stall } from '../../shared/state';
 export class ZjnChild {
     @Prop() color: string = 'gray';
     @Prop({ mutable: true }) stateValue;
-    @Prop({ mutable: true }) loading = false;
+    // @Prop({ mutable: true }) loading = false;
     @Event() emitterTest: EventEmitter;
+    @Event() asyncEvent: EventEmitter;
+
 
     async componentWillLoad() {
     }
 
     async handleLogin(event) {
         console.log(event)
-        this.loading = true;
+        // this.loading = true;
+        this.asyncEvent.emit(true)
         await stall()
+        this.asyncEvent.emit(false)
         this.emitterTest.emit('Voodoo chile logged in')
-        this.loading = false;
+        // this.loading = false;
 
     }
 
@@ -32,9 +36,10 @@ export class ZjnChild {
                     <h2>My favorite color is {this.color}</h2>
                     <h2>{this.stateValue}</h2>
                 </ion-card>
-                <ion-img src="/assets/gif/loading-pink.gif"
+
+                {/* <ion-img src="/assets/gif/loading-pink.gif"
                     hidden={(this.loading ? false : true)}>
-                </ion-img>
+                </ion-img> */}
 
                 <ion-button expand="full" id="/" onClick={(event: UIEvent) => this.handleLogin(event)}>
                     Login

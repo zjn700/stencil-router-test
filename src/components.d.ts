@@ -21,8 +21,10 @@ export namespace Components {
 
   interface AppHome {
     'activeTab': string;
+    'asyncEvent': boolean;
     'fromChild': any;
     'history': RouterHistory;
+    'loading': boolean;
     'match': MatchResults;
     'menuOpen': string;
     'section': any;
@@ -30,8 +32,10 @@ export namespace Components {
   }
   interface AppHomeAttributes extends StencilHTMLAttributes {
     'activeTab'?: string;
+    'asyncEvent'?: boolean;
     'fromChild'?: any;
     'history'?: RouterHistory;
+    'loading'?: boolean;
     'match'?: MatchResults;
     'menuOpen'?: string;
     'section'?: any;
@@ -40,24 +44,22 @@ export namespace Components {
 
   interface AppTest {
     'color': string;
-    'loading': boolean;
     'stateValue': any;
   }
   interface AppTestAttributes extends StencilHTMLAttributes {
     'color'?: string;
-    'loading'?: boolean;
+    'onAsyncEvent'?: (event: CustomEvent) => void;
     'onEmitterTest'?: (event: CustomEvent) => void;
     'stateValue'?: any;
   }
 
   interface AppProfile {
     'color': string;
-    'loading': boolean;
     'stateValue': any;
   }
   interface AppProfileAttributes extends StencilHTMLAttributes {
     'color'?: string;
-    'loading'?: boolean;
+    'onAsyncEvent'?: (event: CustomEvent) => void;
     'onEmitterTest'?: (event: CustomEvent) => void;
     'stateValue'?: any;
   }
@@ -72,12 +74,11 @@ export namespace Components {
 
   interface ZjnChild {
     'color': string;
-    'loading': boolean;
     'stateValue': any;
   }
   interface ZjnChildAttributes extends StencilHTMLAttributes {
     'color'?: string;
-    'loading'?: boolean;
+    'onAsyncEvent'?: (event: CustomEvent) => void;
     'onEmitterTest'?: (event: CustomEvent) => void;
     'stateValue'?: any;
   }

@@ -15,11 +15,19 @@ export class AppHome {
   @Prop({ mutable: true }) fromChild
   @Prop({ mutable: true }) menuOpen = "close"
   @Prop({ mutable: true }) activeTab = "main"
+  @Prop({ mutable: true }) loading = false;
+  @Prop({ mutable: true }) asyncEvent = false;
+
 
   // @Prop() menu = document.querySelector('ion-menu-controller');
 
   @Prop() section: any = "home"
 
+  @Listen('asyncEvent')
+  asyncEventHander(event: CustomEvent) {
+    console.log("async event", event)
+    this.loading = event.detail;
+  }
 
   @Listen('emitterTest')
   emitterTestHandler(event: CustomEvent) {
@@ -106,8 +114,15 @@ export class AppHome {
           Welcome to the Ionic PWA Toolkit.
         </p>
         {/* <p>This value is from the zjn-child component: {this.fromChild}</p> */}
+        <div id="loading" hidden={(this.loading ? false : true)}>
+          <ion-img
+            src="/assets/gif/loading-pink.gif"
+            hidden={(this.loading ? false : true)}>
+          </ion-img>
+        </div>
 
-        <p hidden={(this.fromChild ? false : true)}>This value is from the zjn-child component:</p>
+
+        <p hidden={(this.fromChild ? false : true)}>This value is from a child component:</p>
         <h1>{this.fromChild}</h1>
 
         {/* <ion-button id="profile" onClick={(event: UIEvent) => this.handleClick(event)}> */}

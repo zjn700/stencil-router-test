@@ -63,7 +63,7 @@ li {
     list-style-type:none;
     width: 90%;
     padding: .5em;
-    padding-left: 30px;
+    padding-left: 2em;
     border-radius: 15px;
     
 
@@ -99,3 +99,21 @@ hr{
 }
 
 
+@media (min-width:20em)  { /* iphone 5/SEsmartphones, iPhone, portrait 480x320 phones */ 
+    li {
+        padding:0;
+    }
+}
+
+@media (min-width:22em)  { /* galaxy s5 smartphones, iPhone, portrait 480x320 phones */ 
+    li {
+        padding:0;
+    }
+}
+
+@media (min-width:23em)  { /* smartphones, iPhone, portrait 480x320 phones */ 
+    li {
+        padding:.2em;
+        padding-left:1em;
+    }
+}

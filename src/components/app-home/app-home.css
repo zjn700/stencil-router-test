@@ -1,3 +1,26 @@
+.hidden {
+    display: none;
+ }
+ 
+ .shown {
+    display:block;
+ }
+ 
+ #loading {
+     width:100%;
+     /* color:red; */
+     /* background-color: orange; */
+ }
+
+#loading ion-img {
+    position: absolute;
+    top:33%;
+    z-index: 10;
+    background: #dddddd;
+    left:50%;
+    opacity: .85;
+}
+
 ion-button {
     cursor: pointer;
 }
@@ -37,10 +60,55 @@ ion-title {
     z-index: 1; /* Sit on top */
     left: 20;
     top: 70px;
-    width: 95%; /* Full width */
+    width: 90%; /* Full width */
     height: auto; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(252, 247, 247); /* Fallback color */
     background-color: rgba(250, 246, 246, 0.93); /* Black w/ opacity */
-    box-shadow: 0 8px 6px -6px black;
+    box-shadow: 8px 8px 10px -4px #777777;
   }
+
+
+    @media (min-width:20em)  { /* iphone 5/SE */ 
+        #loading ion-img {
+            left:33%;
+        }
+    }
+
+    @media (min-width:22em)  { /* galaxy s5 */ 
+        #loading ion-img {
+            left: 35%;
+        }
+    }
+
+    @media (min-width:23em)  { /* iphone 6/7/8 */ 
+        #loading ion-img {
+            left:8.5em;
+            /* background-color: red; */
+
+        }
+    }
+
+    @media (min-width:24em)  { /* pixel 2, iphone 6/7/8 plus */ 
+        #loading ion-img {
+            left:9.5em;
+            /* background-color: blue; */
+
+        }
+    }
+
+    @media (min-width:48em)  { /* ipad and higher*/ 
+        #loading ion-img {
+            left:43%;
+        }
+        .modal {
+            width: 50%;
+        }
+    }
+
+    @media (min-width:64em)  { /* ipad pro  */ 
+        #loading ion-img {
+            left:45%;
+        }   
+    }
+
