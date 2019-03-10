@@ -3,13 +3,21 @@
 
 }
 
+.hidden {
+    display: none;
+ }
+ 
+.shown {
+    display:block;
+ }
+ 
 ion-content {
     height: calc(100vh - 44px - 70px);
 
 }
 
 ion-column {
-    width: 50%;
+    width: 100%;
 }
 
 ion-column ion-icon {
@@ -25,17 +33,23 @@ ion-row .word-buttons {
 } */
 .word-buttons ion-icon {
     color: red;
+    color:#777;
     font-size: 2em;
 }
 
 ion-card .study-word {
+    display: block;
     background-color: inherit;
     color: inherit;
 }
 
+
+
 ion-card .hide-study-word {
-    background: gray;
-    color: gray;
+    /* display: none; */
+    background: #eee;
+    color: #eee;
+    opacity: .5;
 }
 
 .footer-vocabulary{
@@ -84,3 +98,20 @@ ion-card .hide-study-word {
     filter: invert(100%) sepia(7%) saturate(7474%) hue-rotate(287deg) brightness(104%) contrast(115%);
 }
 
+@media (min-width:40em)  { /* ipad and higher*/ 
+    ion-column {
+        width: 50%;
+    }
+}
+@media (min-width:48em)  { /* ipad and higher*/ 
+    /* ion-card {
+        margin-left:25%;
+    } */
+    ion-column {
+        width: 50%;
+    }
+    ion-content {
+        padding: left 200px important!;
+    }
+
+}

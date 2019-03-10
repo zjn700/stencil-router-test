@@ -27,19 +27,15 @@ export class AppVocabulary {
     }
 
     async toggleShowCard(event) {
-        console.log("this card show", this.cardShow, "evt", event.srcElement.id, "ele", this.el)
         let element = document.getElementById("source-word-" + event.srcElement.id);
         if (element.classList.contains('hide-study-word')) {
-            element.classList.remove('hide-study-word');
+            await element.classList.remove('hide-study-word');
+            event.srcElement.src ? event.srcElement.src = "assets/icon/baseline-visibility_off-24px.svg" : event.srcElement.firstChild.src = "assets/icon/baseline-visibility_off-24px.svg"
         } else {
-            element.classList.add('hide-study-word');
+            await element.classList.add('hide-study-word');
+            event.srcElement.src ? event.srcElement.src = "assets/icon/outline-visibility-24px.svg" : event.srcElement.firstChild.src = "assets/icon/outline-visibility-24px.svg"
         }
-
-
-        // element.classList.add("hide-study-word");
-        // this.cardShow = !this.cardShow
-        console.log("this card show 2", this.cardShow, "evt", event)
-
+        element.scrollIntoView({ block: "nearest" });
     }
 
     render() {
@@ -75,29 +71,35 @@ export class AppVocabulary {
                                 </ion-row> */}
 
                             </ion-column>
-
+                            {/* </ion-row>
+                        <ion-row> */}
                             <ion-column>
                                 <ion-card padding>
                                     <h2>{word.meaning}</h2>
                                 </ion-card>
                             </ion-column>
+                        </ion-row>
 
-
-                            <ion-row class='word-buttons'>
-                                <ion-button
-                                    color="light">
-                                    <ion-icon name="volume-high"></ion-icon>
-                                </ion-button>
-                                <ion-button
-                                    onClick={(event: UIEvent) => this.toggleShowCard(event)}
+                        <ion-row class='word-buttons'>
+                            <ion-button
+                                color="light">
+                                <ion-icon name="volume-high"></ion-icon>
+                            </ion-button>
+                            <ion-button
+                                class={this.sourceLanguageShow ? "hidden" : "shown"}
+                                onClick={(event: UIEvent) => this.toggleShowCard(event)}
+                                id={"" + index}
+                                color="light">
+                                <img
                                     id={"" + index}
-                                    color="light">
-                                    <ion-icon name="eye"></ion-icon>
-                                </ion-button>
-                                <ion-button color="light">
-                                    <ion-icon name="search"></ion-icon>
-                                </ion-button>
-                            </ion-row>
+                                    // onClick={(event: UIEvent) => this.toggleShowCard(event)}
+                                    class="filter-gray"
+                                    src="assets/icon/outline-visibility-24px.svg"
+                                    alt="show me" />
+                            </ion-button>
+                            <ion-button color="light">
+                                <ion-icon name="search"></ion-icon>
+                            </ion-button>
                         </ion-row>
                     </ion-card>
                 )}

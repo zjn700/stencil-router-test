@@ -38,5 +38,10 @@ export var wordList = [
         "id": "1",
         "word": "malaki",
         "meaning": "large"
+    },
+    {
+        "id": "1",
+        "word": "Diin ang kasilyas? -  Diin ang banyo? - Sa diin ang CR?",
+        "meaning": "Where is the toilet?  - Where is the bathroom?"
     }
 ]
