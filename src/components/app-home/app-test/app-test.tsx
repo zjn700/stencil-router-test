@@ -1,4 +1,3 @@
-
 import { Component, Prop, Event, EventEmitter } from '@stencil/core';
 import { stall } from '../../../shared/state';
 

@@ -27,7 +27,6 @@ export namespace Components {
     'loading': boolean;
     'match': MatchResults;
     'menuOpen': string;
-    'section': any;
     'stateValue': any;
   }
   interface AppHomeAttributes extends StencilHTMLAttributes {
@@ -38,7 +37,6 @@ export namespace Components {
     'loading'?: boolean;
     'match'?: MatchResults;
     'menuOpen'?: string;
-    'section'?: any;
     'stateValue'?: any;
   }
 
@@ -54,11 +52,9 @@ export namespace Components {
   }
 
   interface AppProfile {
-    'color': string;
     'stateValue': any;
   }
   interface AppProfileAttributes extends StencilHTMLAttributes {
-    'color'?: string;
     'onAsyncEvent'?: (event: CustomEvent) => void;
     'onEmitterTest'?: (event: CustomEvent) => void;
     'stateValue'?: any;
@@ -67,17 +63,24 @@ export namespace Components {
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
 
+  interface AppVocabulary {
+    'words': any;
+  }
+  interface AppVocabularyAttributes extends StencilHTMLAttributes {
+    'onAsyncEvent'?: (event: CustomEvent) => void;
+    'onEmitterTest'?: (event: CustomEvent) => void;
+    'words'?: any;
+  }
+
   interface ZjnMenu {}
   interface ZjnMenuAttributes extends StencilHTMLAttributes {
     'onMenuEvent'?: (event: CustomEvent) => void;
   }
 
   interface ZjnChild {
-    'color': string;
     'stateValue': any;
   }
   interface ZjnChildAttributes extends StencilHTMLAttributes {
-    'color'?: string;
     'onAsyncEvent'?: (event: CustomEvent) => void;
     'onEmitterTest'?: (event: CustomEvent) => void;
     'stateValue'?: any;
@@ -90,6 +93,7 @@ declare global {
     'AppTest': Components.AppTest;
     'AppProfile': Components.AppProfile;
     'AppRoot': Components.AppRoot;
+    'AppVocabulary': Components.AppVocabulary;
     'ZjnMenu': Components.ZjnMenu;
     'ZjnChild': Components.ZjnChild;
   }
@@ -99,6 +103,7 @@ declare global {
     'app-test': Components.AppTestAttributes;
     'app-profile': Components.AppProfileAttributes;
     'app-root': Components.AppRootAttributes;
+    'app-vocabulary': Components.AppVocabularyAttributes;
     'zjn-menu': Components.ZjnMenuAttributes;
     'zjn-child': Components.ZjnChildAttributes;
   }
@@ -128,6 +133,12 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLAppVocabularyElement extends Components.AppVocabulary, HTMLStencilElement {}
+  var HTMLAppVocabularyElement: {
+    prototype: HTMLAppVocabularyElement;
+    new (): HTMLAppVocabularyElement;
+  };
+
   interface HTMLZjnMenuElement extends Components.ZjnMenu, HTMLStencilElement {}
   var HTMLZjnMenuElement: {
     prototype: HTMLZjnMenuElement;
@@ -145,6 +156,7 @@ declare global {
     'app-test': HTMLAppTestElement
     'app-profile': HTMLAppProfileElement
     'app-root': HTMLAppRootElement
+    'app-vocabulary': HTMLAppVocabularyElement
     'zjn-menu': HTMLZjnMenuElement
     'zjn-child': HTMLZjnChildElement
   }
@@ -154,6 +166,7 @@ declare global {
     'app-test': HTMLAppTestElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'app-vocabulary': HTMLAppVocabularyElement;
     'zjn-menu': HTMLZjnMenuElement;
     'zjn-child': HTMLZjnChildElement;
   }

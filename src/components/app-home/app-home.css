@@ -14,12 +14,49 @@
 
 #loading ion-img {
     position: absolute;
-    top:33%;
+    top:20%;
     z-index: 10;
     background: #dddddd;
     left:50%;
     opacity: .85;
 }
+
+.footer{
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 2.5em;
+  width: 100%;
+  /* border-top: 1px solid #CCC; */
+}
+.tab {
+    cursor: pointer;
+    float: left;
+    fill:white;
+    width: 33.33%;
+    text-align: center;
+    border-right: 1px solid #cccccc ;
+    border-top-right-radius: 15px;
+}
+
+.tab:last-child {
+    border-right: unset;
+  }
+
+.tab ion-icon {
+    color:red;
+    color   : #555555;
+    font-size:1.5em;
+    padding:1em;
+}
+/* 
+.tab img {
+    color: #555555;
+    width: 1.5em;
+    height: 1.5em;
+} */
+
 
 ion-button {
     cursor: pointer;

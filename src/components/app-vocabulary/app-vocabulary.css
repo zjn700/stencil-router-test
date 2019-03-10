@@ -1,0 +1,13 @@
+.scroll {
+    height: 100%;
+
+}
+
+ion-content {
+    height: calc(100vh - 44px - 70px);
+
+}
+
+/* .inner-scroll .scroll-y  {
+    height: 20px;
+} */
