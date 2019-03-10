@@ -8,6 +8,79 @@ ion-content {
 
 }
 
-/* .inner-scroll .scroll-y  {
-    height: 20px;
+ion-column {
+    width: 50%;
+}
+
+ion-column ion-icon {
+    color:gray;
+}
+
+ion-row .word-buttons {
+    margin-left: .5em;
+}
+/* 
+.word-buttons ion-button {
+    width: 30%;
 } */
+.word-buttons ion-icon {
+    color: red;
+    font-size: 2em;
+}
+
+ion-card .study-word {
+    background-color: inherit;
+    color: inherit;
+}
+
+ion-card .hide-study-word {
+    background: gray;
+    color: gray;
+}
+
+.footer-vocabulary{
+    z-index: 100;
+    background-color: white;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    height: 2.5em;
+    width: 100%;
+    /* border-top: 1px solid #CCC; */
+  }
+
+ .footer-vocabulary .tab {
+    cursor: pointer;
+    float: left;
+    fill:white;
+    width: 50%;
+    text-align: center;
+    border-right: 1px solid #cccccc ;
+    border-top-right-radius: 15px;
+}
+
+.tab:last-child {
+    border-right: unset;
+  }
+
+.showSource{
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(279deg) brightness(104%) contrast(96%)
+}
+.hideSource {
+    filter: invert(100%) sepia(7%) saturate(7474%) hue-rotate(287deg) brightness(104%) contrast(115%);
+
+}
+
+.filter-gray{
+    /* filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%); */
+    filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(279deg) brightness(104%) contrast(96%)
+}
+
+.filter-disabled{
+    filter: invert(73%) sepia(11%) saturate(12%) hue-rotate(16deg) brightness(91%) contrast(90%);
+
+}
+.filter-white{
+    filter: invert(100%) sepia(7%) saturate(7474%) hue-rotate(287deg) brightness(104%) contrast(115%);
+}
+

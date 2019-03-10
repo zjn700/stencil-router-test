@@ -64,11 +64,13 @@ export namespace Components {
   interface AppRootAttributes extends StencilHTMLAttributes {}
 
   interface AppVocabulary {
+    'cardShow': boolean;
+    'sourceLanguageShow': boolean;
     'words': any;
   }
   interface AppVocabularyAttributes extends StencilHTMLAttributes {
-    'onAsyncEvent'?: (event: CustomEvent) => void;
-    'onEmitterTest'?: (event: CustomEvent) => void;
+    'cardShow'?: boolean;
+    'sourceLanguageShow'?: boolean;
     'words'?: any;
   }
 

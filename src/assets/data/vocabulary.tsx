@@ -12,7 +12,7 @@ export var wordList = [
     {
         "id": "3",
         "word": "inaantok",
-        "meaning": "sleep"
+        "meaning": "sleepy"
     },
     {
         "id": "4",

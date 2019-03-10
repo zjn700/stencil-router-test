@@ -45,6 +45,10 @@ export class AppHome {
       })
   }
 
+  async handleHomeButton(evt) {
+    console.log("home -buttonnevt", evt)
+  }
+
   async handleTab(evt) {
     console.log(evt)
     // this.activeTab = (this.activeTab == evt.srcElement.id ? "open" : evt.srcElement.id)
@@ -98,7 +102,13 @@ export class AppHome {
         </app-vocabulary>
 
         <div class="footer">
-          <div class="tab"><ion-button expand="block" color="light"><ion-icon name="list"></ion-icon></ion-button></div>
+          <div class="tab">
+            <ion-button expand="block"
+              color="light"
+              onClick={(event: UIEvent) => this.handleHomeButton(event)}>
+              <ion-icon name="list"></ion-icon>
+            </ion-button>
+          </div>
           <div class="tab"><ion-button expand="block" color="light"><ion-icon name="apps"></ion-icon></ion-button></div>
           <div class="tab"><ion-button expand="block" color="light"><ion-icon name="card"></ion-icon></ion-button></div>
         </div>
