@@ -11,6 +11,7 @@ export class AppVocabulary {
     @Prop() words = wordList;
 
     @Prop({ mutable: true }) showFloatingMenu: boolean = false;
+    @Prop({ mutable: true }) floatingMenuTriggerId: any = null;
     @State() rePaint: boolean = false;
 
     @Prop({ mutable: true }) sourceLanguageShow: boolean = true;
@@ -28,9 +29,19 @@ export class AppVocabulary {
         console.log("vocab -buttonnevt", evt)
         this.sourceLanguageShow = !this.sourceLanguageShow
     }
+    async toggleShowCard2(event) {
+
+        console.log("event toggleShowCard2", event)
+    }
 
     async toggleShowCard(event) {
-        let element = document.getElementById("source-word-" + event.srcElement.id);
+        let element
+        if (this.floatingMenuTriggerId) {
+            element = document.getElementById("source-word-" + this.floatingMenuTriggerId);
+        } else {
+            element = document.getElementById("source-word-" + event.srcElement.id);
+        }
+
         if (element.classList.contains('hide-study-word')) {
             await element.classList.remove('hide-study-word');
             event.srcElement.src ? event.srcElement.src = "assets/icon/baseline-visibility_off-24px.svg" : event.srcElement.firstChild.src = "assets/icon/baseline-visibility_off-24px.svg"
@@ -42,44 +53,36 @@ export class AppVocabulary {
     }
 
     async toggleFloatingMenu(event) {
-        console.log("event", event)
-        console.log("floating menu", event.pageY, event.srcElement.top, event.srcElement, window.top)
+        const reOpen = !(this.floatingMenuTriggerId == event.srcElement.id)
+        console.log("reopen", reOpen)
         this.showFloatingMenu = !this.showFloatingMenu
-        event.srcElement.style.color = "#ede123"
-        // console.log("floating meny color", event, event.srcElement.style.color)
-        // console.log("floating meny color", event, event.screenY)
-
+        // event.srcElement.style.color = "#ede123"
 
         let element = await document.getElementById("floatingMenu")
-
+        console.log("element UUUUU", event, event.srcElement.id)
+        console.log("element UUUUU", element.children[0])
+        element.children[0].id = event.srcElement.id
+        this.floatingMenuTriggerId = event.srcElement.id
+        console.log(element.children[0].id)
+        // get/set coordinates of floating menu
         const bodyOffsets = document.body.getBoundingClientRect();
         const tempX = event.pageX - bodyOffsets.left;
-        const tempY = event.pageY
-        // + event.srcElement.id);
-        if (element) {
-            console.log("nnnnnnnnnnnnnnnnnnnnn", element.offsetTop)
-            element.style.color = "orange"
-            element.style.position = "fixed"
-            element.style.top = tempY + "px"
-            element.style.left = tempX + "px"
-            // console.log("element.style.top", element.pageY)
-            this.rePaint = !this.rePaint
-        } else {
-            console.log("element not found???")
+        const tempY = event.pageY - 20
+        // if (element) {
+        element.style.position = "fixed"
+        element.style.top = tempY + "px"
+        element.style.left = tempX + "px"
+
+        if (reOpen) {
+            this.showFloatingMenu = true
         }
-
-        // setTimeout(() => this.showFloatingMenu = false, 8000)
-
+        this.rePaint = !this.rePaint
+        // } 
     }
 
     userDidScroll() {
-        // this.showFloatingMenu = false
-        setTimeout(() => this.showFloatingMenu = false, 500)
-
+        setTimeout(() => { this.showFloatingMenu = false; this.floatingMenuTriggerId = null }, 400)
     }
-
-    // didUserScroll();
-
 
     render() {
         return (
@@ -91,8 +94,21 @@ export class AppVocabulary {
                                 <ion-card
                                     id={"source-word-" + index}
                                     padding
-                                    onClick={(event: UIEvent) => this.toggleFloatingMenu(event)}
+                                    // onClick={(event: UIEvent) => this.toggleFloatingMenu(event)}
                                     class={this.sourceLanguageShow ? "study-word" : "hide-study-word"}>
+
+                                    <div class="more-icon ">
+                                        {/* <ion-button color="light"> */}
+                                        <img
+                                            id={"" + index}
+                                            onClick={(event: UIEvent) => this.toggleFloatingMenu(event)}
+
+                                            class={this.showFloatingMenu ? "filter-tomato" : "filter-gray"}
+                                            src="assets/icon/baseline-more_horiz-24px.svg"
+                                            alt="show me" />
+                                        {/* </ion-button> */}
+                                    </div>
+
                                     <h2>{word.word}</h2>
                                 </ion-card>
                             </ion-column>
@@ -104,7 +120,7 @@ export class AppVocabulary {
                             </ion-column>
                         </ion-row>
 
-                        <ion-row class='word-buttons'>
+                        {/* <ion-row class='word-buttons'>
                             <ion-button
                                 color="light">
                                 <ion-icon name="volume-high"></ion-icon>
@@ -125,7 +141,7 @@ export class AppVocabulary {
                             <ion-button color="light">
                                 <ion-icon name="search"></ion-icon>
                             </ion-button>
-                        </ion-row>
+                        </ion-row> */}
                     </ion-card>
                 )}
 
@@ -133,7 +149,32 @@ export class AppVocabulary {
                     id="floatingMenu"
                     class={this.showFloatingMenu ? "shown" : "hidden"}
                     padding >
-                    <h1>test</h1>
+                    <span id=""></span>
+                    <ion-row class='word-buttons'>
+
+                        <ion-button
+                            color="light">
+                            <ion-icon name="volume-high"></ion-icon>
+                        </ion-button>
+
+                        <ion-button
+                            class={this.sourceLanguageShow ? "hidden" : "shown"}
+                            onClick={(event: UIEvent) => this.toggleShowCard(event)} ///rd2
+                            // id={"" + index}
+                            color="light">
+                            <img
+                                // id={"" + index}
+                                class="filter-gray"
+                                src="assets/icon/outline-visibility-24px.svg"
+                                alt="show me" />
+                        </ion-button>
+
+                        <ion-button color="light">
+                            <ion-icon name="search"></ion-icon>
+                        </ion-button>
+                    </ion-row>
+
+
                 </ion-card>
 
                 <div class="footer-vocabulary">

@@ -77,11 +77,23 @@ ion-card .hide-study-word {
     border-right: unset;
   }
 
+.more-icon {
+    position: absolute;
+    bottom: 0;
+    left:0;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 1;
+}
+
 
 #floatingMenu{
     position: absolute;
-    top:50px;
-    color:red;
+    
+    /* top:100px; */
+    /* width: 100%; */
+    background-color:white;
+
     z-index: 10;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 }
 
@@ -92,7 +104,17 @@ ion-card .hide-study-word {
     filter: invert(100%) sepia(7%) saturate(7474%) hue-rotate(287deg) brightness(104%) contrast(115%);
 
 }
+.filter-tomato {
+    filter: invert(49%) sepia(16%) saturate(3009%) hue-rotate(325deg) brightness(103%) contrast(101%);
+}
 
+.filter-dim-gray {
+    filter: invert(43%) sepia(7%) saturate(989%) hue-rotate(61deg) brightness(96%) contrast(90%);
+}
+
+.filter-forest-green {
+    filter: invert(30%) sepia(62%) saturate(4022%) hue-rotate(128deg) brightness(103%) contrast(90%);
+}
 .filter-gray{
     /* filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%); */
     filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(279deg) brightness(104%) contrast(96%)
