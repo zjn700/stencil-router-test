@@ -5,6 +5,8 @@
 
 .hidden {
     display: none;
+    /* top: -500px; */
+
  }
  
 .shown {
@@ -43,8 +45,6 @@ ion-card .study-word {
     color: inherit;
 }
 
-
-
 ion-card .hide-study-word {
     /* display: none; */
     background: #eee;
@@ -76,6 +76,14 @@ ion-card .hide-study-word {
 .tab:last-child {
     border-right: unset;
   }
+
+
+#floatingMenu{
+    position: absolute;
+    top:50px;
+    color:red;
+    z-index: 10;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+}
 
 .showSource{
     filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(279deg) brightness(104%) contrast(96%)
