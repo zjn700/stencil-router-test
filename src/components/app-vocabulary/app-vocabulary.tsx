@@ -10,9 +10,13 @@ import { wordList } from '../../assets/data/vocabulary'
 export class AppVocabulary {
     @Prop() words = wordList;
 
-    @Prop({ mutable: true }) showFloatingMenu: boolean = false;
+    // @Prop({ mutable: true }) showFloatingMenu: boolean = false;
+    @State() showFloatingMenu: boolean = false;
     @Prop({ mutable: true }) floatingMenuTriggerId: any = null;
-    @State() rePaint: boolean = false;
+    @Prop({ mutable: true }) floatIcon: any
+    @State() resetIcons: boolean = false;
+    // @State() rePaint: boolean = false;
+    @State() start: boolean = true;
 
     @Prop({ mutable: true }) sourceLanguageShow: boolean = true;
     @Prop({ mutable: true }) cardShow: boolean = true;
@@ -21,7 +25,6 @@ export class AppVocabulary {
     // @Event() asyncEvent: EventEmitter;
 
     async componentWillLoad() {
-
         console.log(this.words)
     }
 
@@ -53,12 +56,22 @@ export class AppVocabulary {
     }
 
     async toggleFloatingMenu(event) {
-        const reOpen = !(this.floatingMenuTriggerId == event.srcElement.id)
-        console.log("reopen", reOpen)
-        this.showFloatingMenu = !this.showFloatingMenu
         // event.srcElement.style.color = "#ede123"
+        let reOpen = false;
+        if (this.start) { this.start = !this.start } else {
+            reOpen = !(this.floatingMenuTriggerId == event.srcElement.id)  // check if different menu has been clicked
+        }
+
+        this.showFloatingMenu = !this.showFloatingMenu
+
+        // if (this.showFloatingMenu) { event.srcElement.src = "assets/icon/outline-cancel-24px.svg" } else {
+        //     event.srcElement.src = "assets/icon/baseline-more_horiz-24px.svg";
+        // }
+        event.srcElement.src = this.showFloatingMenu ? "assets/icon/outline-cancel-24px.svg" : "assets/icon/baseline-more_horiz-24px.svg";
+        console.log("event el src XXXXX", event.srcElement.src)
 
         let element = await document.getElementById("floatingMenu")
+        // event.srcElement.src = "assets/icon//outline-cancel-24px.svg"
         console.log("element UUUUU", event, event.srcElement.id)
         console.log("element UUUUU", element.children[0])
         element.children[0].id = event.srcElement.id
@@ -67,21 +80,30 @@ export class AppVocabulary {
         // get/set coordinates of floating menu
         const bodyOffsets = document.body.getBoundingClientRect();
         const tempX = event.pageX - bodyOffsets.left;
-        const tempY = event.pageY - 20
+        const tempY = event.pageY - 10
         // if (element) {
         element.style.position = "fixed"
         element.style.top = tempY + "px"
         element.style.left = tempX + "px"
 
         if (reOpen) {
+            if (this.floatIcon) { this.floatIcon.src = "assets/icon/baseline-more_horiz-24px.svg" }
+
             this.showFloatingMenu = true
+            console.log("event src ele src", event.srcElement.src)
+            event.srcElement.src = "assets/icon//outline-cancel-24px.svg"
+            this.floatIcon = event.srcElement
         }
-        this.rePaint = !this.rePaint
+
+        // this.rePaint = !this.rePaint
         // } 
     }
 
     userDidScroll() {
-        setTimeout(() => { this.showFloatingMenu = false; this.floatingMenuTriggerId = null }, 400)
+        this.resetIcons = !this.resetIcons;
+        setTimeout(() => { this.showFloatingMenu = false; this.floatingMenuTriggerId = null }, 200)
+        // this.showFloatingMenu ? event.srcElement.src = "assets/icon/baseline-more_horiz-24px.svg" : event.srcElement.src =  "assets/icon//outline-cancel-24px.svg"
+
     }
 
     render() {
@@ -102,9 +124,10 @@ export class AppVocabulary {
                                         <img
                                             id={"" + index}
                                             onClick={(event: UIEvent) => this.toggleFloatingMenu(event)}
-
-                                            class={this.showFloatingMenu ? "filter-tomato" : "filter-gray"}
-                                            src="assets/icon/baseline-more_horiz-24px.svg"
+                                            class={this.showFloatingMenu ? "filter-dim-gray" : "filter-gray"}
+                                            // /home/wsz2800/dev/my-pwa/src/assets/icon/baseline-more_horiz-24px.svg
+                                            src={!this.resetIcons ? "assets/icon/baseline-more_horiz-24px.svg" : "assets/icon/baseline-more_horiz-24px-2.svg"}
+                                            // src="assets/icon/baseline-more_horiz-24px.svg"
                                             alt="show me" />
                                         {/* </ion-button> */}
                                     </div>
@@ -148,7 +171,7 @@ export class AppVocabulary {
                 <ion-card
                     id="floatingMenu"
                     class={this.showFloatingMenu ? "shown" : "hidden"}
-                    padding >
+                >
                     <span id=""></span>
                     <ion-row class='word-buttons'>
 

@@ -65,15 +65,15 @@ export namespace Components {
 
   interface AppVocabulary {
     'cardShow': boolean;
+    'floatIcon': any;
     'floatingMenuTriggerId': any;
-    'showFloatingMenu': boolean;
     'sourceLanguageShow': boolean;
     'words': any;
   }
   interface AppVocabularyAttributes extends StencilHTMLAttributes {
     'cardShow'?: boolean;
+    'floatIcon'?: any;
     'floatingMenuTriggerId'?: any;
-    'showFloatingMenu'?: boolean;
     'sourceLanguageShow'?: boolean;
     'words'?: any;
   }
