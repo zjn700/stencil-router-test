@@ -1,6 +1,5 @@
 .scroll {
     height: 100%;
-
 }
 
 .hidden {
@@ -8,13 +7,40 @@
     /* top: -500px; */
 
  }
+
+ /* ::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+} */
+
+/* .no-scroll {
+    --overflow: auto;
+} */
+
+/* .scroll-y {
+    --overflow: hidden;  
+ } */
  
+ /* .inner-scroll .scroll-y {
+    --overflow: hidden;
+    overflow-y: var(--overflow);
+ } */
+
+/* width */
+ 
+
 .shown {
     display:block;
  }
  
+ .v-content {
+     /* background-color: #eee; */
+     opacity: 1;
+ }
 ion-content {
     height: calc(100vh - 44px - 70px);
+    overflow: hidden;
+
 
 }
 
@@ -43,13 +69,23 @@ ion-card .study-word {
     display: block;
     background-color: inherit;
     color: inherit;
+
 }
 
 ion-card .hide-study-word {
     /* display: none; */
     background: #eee;
     color: #eee;
+    /* box-shadow: 8px 8px 10px -4px #777777; */
+
     /* opacity: .5; */
+}
+.sc-ion-card-md-h {
+    margin-bottom: 3em;
+
+    /* border-bottom: solid 1px red; */
+
+
 }
 
 .footer-vocabulary{
@@ -89,13 +125,16 @@ ion-card .hide-study-word {
 
 #floatingMenu{
     position: absolute;
+    padding: 0;
     
     /* top:100px; */
     /* width: 100%; */
     background-color:white;
+    box-shadow: 8px 8px 10px -4px #777777;
 
     z-index: 1000;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 }
+
 
 .showSource{
     filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(279deg) brightness(104%) contrast(96%)
@@ -144,4 +183,41 @@ ion-card .hide-study-word {
         padding: left 200px important!;
     }
 
+}
+
+html {
+    overflow: auto;
+}
+body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 50px;
+    right: 20px;
+    padding: 30px; 
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 1px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255,0,0,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4); 
 }

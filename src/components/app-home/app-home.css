@@ -12,6 +12,18 @@
      /* background-color: orange; */
  }
 
+ html {
+    overflow:   scroll;
+  }
+  ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent; /* make scrollbar transparent */
+  }
+
+ /* .no-scroll {
+    --overflow: hidden;
+} */
+
 #loading ion-img {
     position: absolute;
     top:20%;

@@ -98,7 +98,7 @@ export class AppHome {
         <zjn-child hidden={(this.activeTab == "child" ? false : true)}
           stateValue={this.stateValue}></zjn-child>
 
-        <app-vocabulary hidden={(this.activeTab == "vocabulary" ? false : true)}>
+        <app-vocabulary class="no-scroll" hidden={(this.activeTab == "vocabulary" ? false : true)}>
         </app-vocabulary>
 
         <div class="footer">

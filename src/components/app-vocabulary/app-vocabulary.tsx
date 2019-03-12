@@ -28,6 +28,8 @@ export class AppVocabulary {
         console.log(this.words)
     }
 
+
+
     async handleVocabButton(evt) {
         console.log("vocab -buttonnevt", evt)
         this.sourceLanguageShow = !this.sourceLanguageShow
@@ -56,6 +58,8 @@ export class AppVocabulary {
     }
 
     async toggleFloatingMenu(event) {
+        console.log("el", this.el, this.el.getBoundingClientRect().height)
+
         // event.srcElement.style.color = "#ede123"
         let reOpen = false;
         if (this.start) { this.start = !this.start } else {
@@ -80,7 +84,7 @@ export class AppVocabulary {
         // get/set coordinates of floating menu
         const bodyOffsets = document.body.getBoundingClientRect();
         const tempX = event.pageX - bodyOffsets.left;
-        const tempY = event.pageY - 10
+        const tempY = event.pageY + 5
         // if (element) {
         element.style.position = "fixed"
         element.style.top = tempY + "px"
@@ -106,44 +110,47 @@ export class AppVocabulary {
 
     }
 
+
     render() {
         return (
-            <ion-content scrollEvents fullscreen onIonScrollStart={() => this.userDidScroll()}  >
-                {this.words.map((word, index) =>
-                    <ion-card>
-                        <ion-row>
-                            <ion-column>
-                                <ion-card
-                                    id={"source-word-" + index}
-                                    padding
-                                    // onClick={(event: UIEvent) => this.toggleFloatingMenu(event)}
-                                    class={this.sourceLanguageShow ? "study-word" : "hide-study-word"}>
+            <ion-content class="no-scroll" scrollEvents fullscreen onIonScrollStart={() => this.userDidScroll()}>
+                {/* // <ion-content fullscreen > */}
+                <div class="v-content">
+                    {this.words.map((word, index) =>
+                        <ion-card>
+                            <ion-row>
+                                <ion-column>
+                                    <ion-card
+                                        id={"source-word-" + index}
+                                        padding
+                                        // onClick={(event: UIEvent) => this.toggleFloatingMenu(event)}
+                                        class={this.sourceLanguageShow ? "study-word" : "hide-study-word"}>
 
-                                    <div class="more-icon ">
-                                        {/* <ion-button color="light"> */}
-                                        <img
-                                            id={"" + index}
-                                            onClick={(event: UIEvent) => this.toggleFloatingMenu(event)}
-                                            class={this.showFloatingMenu ? "filter-dim-gray" : "filter-gray"}
-                                            // /home/wsz2800/dev/my-pwa/src/assets/icon/baseline-more_horiz-24px.svg
-                                            src={!this.resetIcons ? "assets/icon/baseline-more_horiz-24px.svg" : "assets/icon/baseline-more_horiz-24px-2.svg"}
-                                            // src="assets/icon/baseline-more_horiz-24px.svg"
-                                            alt="show me" />
-                                        {/* </ion-button> */}
-                                    </div>
+                                        <div class="more-icon ">
+                                            {/* <ion-button color="light"> */}
+                                            <img
+                                                id={"" + index}
+                                                onClick={(event: UIEvent) => this.toggleFloatingMenu(event)}
+                                                class={this.showFloatingMenu ? "filter-dim-gray" : "filter-gray"}
+                                                // /home/wsz2800/dev/my-pwa/src/assets/icon/baseline-more_horiz-24px.svg
+                                                src={!this.resetIcons ? "assets/icon/baseline-more_horiz-24px.svg" : "assets/icon/baseline-more_horiz-24px-2.svg"}
+                                                // src="assets/icon/baseline-more_horiz-24px.svg"
+                                                alt="show me" />
+                                            {/* </ion-button> */}
+                                        </div>
 
-                                    <h2>{word.word}</h2>
-                                </ion-card>
-                            </ion-column>
+                                        <h2>{word.word}</h2>
+                                    </ion-card>
+                                </ion-column>
 
-                            <ion-column>
-                                <ion-card padding>
-                                    <h2>{word.meaning}</h2>
-                                </ion-card>
-                            </ion-column>
-                        </ion-row>
+                                <ion-column>
+                                    <ion-card padding>
+                                        <h2>{word.meaning}</h2>
+                                    </ion-card>
+                                </ion-column>
+                            </ion-row>
 
-                        {/* <ion-row class='word-buttons'>
+                            {/* <ion-row class='word-buttons'>
                             <ion-button
                                 color="light">
                                 <ion-icon name="volume-high"></ion-icon>
@@ -165,60 +172,60 @@ export class AppVocabulary {
                                 <ion-icon name="search"></ion-icon>
                             </ion-button>
                         </ion-row> */}
-                    </ion-card>
-                )}
+                        </ion-card>
+                    )}
 
-                <ion-card
-                    id="floatingMenu"
-                    class={this.showFloatingMenu ? "shown" : "hidden"}
-                >
-                    <span id=""></span>
-                    <ion-row class='word-buttons'>
+                    <ion-card
+                        id="floatingMenu"
+                        class={this.showFloatingMenu ? "shown" : "hidden"}
+                    >
+                        <span id=""></span>
+                        <ion-row class='word-buttons'>
 
-                        <ion-button
-                            color="light">
-                            <ion-icon name="volume-high"></ion-icon>
-                        </ion-button>
+                            <ion-button
+                                color="light">
+                                <ion-icon name="volume-high"></ion-icon>
+                            </ion-button>
 
-                        <ion-button
-                            class={this.sourceLanguageShow ? "hidden" : "shown"}
-                            onClick={(event: UIEvent) => this.toggleShowCard(event)} ///rd2
-                            // id={"" + index}
-                            color="light">
-                            <img
+                            <ion-button
+                                class={this.sourceLanguageShow ? "hidden" : "shown"}
+                                onClick={(event: UIEvent) => this.toggleShowCard(event)} ///rd2
                                 // id={"" + index}
-                                class="filter-gray"
-                                src="assets/icon/outline-visibility-24px.svg"
-                                alt="show me" />
-                        </ion-button>
+                                color="light">
+                                <img
+                                    // id={"" + index}
+                                    class="filter-gray"
+                                    src="assets/icon/outline-visibility-24px.svg"
+                                    alt="show me" />
+                            </ion-button>
 
-                        <ion-button color="light">
-                            <ion-icon name="search"></ion-icon>
-                        </ion-button>
-                    </ion-row>
+                            <ion-button color="light">
+                                <ion-icon name="search"></ion-icon>
+                            </ion-button>
+                        </ion-row>
+                        {/* </div> */}
+                    </ion-card>
 
+                    <div class="footer-vocabulary">
 
-                </ion-card>
+                        <div class="tab">
+                            <ion-button expand="block"
+                                color={this.sourceLanguageShow ? "light" : "medium"}
+                                onClick={(event: UIEvent) => this.handleVocabButton(event)}>
+                                <img
+                                    class={this.sourceLanguageShow ? "filter-gray" : "filter-white"}
+                                    src={this.sourceLanguageShow ? "assets/icon/baseline-visibility_off-24px.svg" : "assets/icon/outline-visibility-24px.svg"}
+                                    alt="show me" />
+                            </ion-button>
+                        </div>
 
-                <div class="footer-vocabulary">
-
-                    <div class="tab">
-                        <ion-button expand="block"
-                            color={this.sourceLanguageShow ? "light" : "medium"}
-                            onClick={(event: UIEvent) => this.handleVocabButton(event)}>
-                            <img
-                                class={this.sourceLanguageShow ? "filter-gray" : "filter-white"}
-                                src={this.sourceLanguageShow ? "assets/icon/baseline-visibility_off-24px.svg" : "assets/icon/outline-visibility-24px.svg"}
-                                alt="show me" />
-                        </ion-button>
-                    </div>
-
-                    <div class="tab">
-                        <ion-button expand="block"
-                            color="light">
-                            <img class="filter-gray" src="assets/icon/baseline-visibility_off-24px.svg" alt="show me" />
-                            {/* <ion-icon name="apps"></ion-icon> */}
-                        </ion-button>
+                        <div class="tab">
+                            <ion-button expand="block"
+                                color="light">
+                                <img class="filter-gray" src="assets/icon/baseline-visibility_off-24px.svg" alt="show me" />
+                                {/* <ion-icon name="apps"></ion-icon> */}
+                            </ion-button>
+                        </div>
                     </div>
                 </div>
             </ion-content>
