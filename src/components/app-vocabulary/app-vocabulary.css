@@ -8,27 +8,6 @@
 
  }
 
- /* ::-webkit-scrollbar,
-*::-webkit-scrollbar {
-  display: none;
-} */
-
-/* .no-scroll {
-    --overflow: auto;
-} */
-
-/* .scroll-y {
-    --overflow: hidden;  
- } */
- 
- /* .inner-scroll .scroll-y {
-    --overflow: hidden;
-    overflow-y: var(--overflow);
- } */
-
-/* width */
- 
-
 .shown {
     display:block;
  }
@@ -69,7 +48,7 @@ ion-card .study-word {
     display: block;
     background-color: inherit;
     color: inherit;
-
+    color: dodgerblue;
 }
 
 ion-card .hide-study-word {
@@ -82,11 +61,15 @@ ion-card .hide-study-word {
 }
 .sc-ion-card-md-h {
     margin-bottom: 3em;
-
-    /* border-bottom: solid 1px red; */
-
-
 }
+
+.vocab-word {
+    font-size: 1.5em;
+    padding-top: 0px;
+    padding-left: 10px;
+    padding-bottom: 30px;
+}
+
 
 .footer-vocabulary{
     z-index: 100;
@@ -171,6 +154,12 @@ ion-card .hide-study-word {
     ion-column {
         width: 50%;
     }
+    .vocab-word {
+        font-size: 2.5em;
+        /* padding-top: 0px;
+        padding-left: 10px;
+        padding-bottom: 30px; */
+    }
 }
 @media (min-width:48em)  { /* ipad and higher*/ 
     /* ion-card {
@@ -185,39 +174,4 @@ ion-card .hide-study-word {
 
 }
 
-html {
-    overflow: auto;
-}
-body {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 50px;
-    right: 20px;
-    padding: 30px; 
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-/* Let's get this party started */
-::-webkit-scrollbar {
-    width: 1px;
-}
- 
-/* Track */
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: rgba(255,0,0,0.8); 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-}
-::-webkit-scrollbar-thumb:window-inactive {
-	background: rgba(255,0,0,0.4); 
-}
+/* For the "inset" look only */ 

@@ -49,8 +49,11 @@ export class AppVocabulary {
 
         if (element.classList.contains('hide-study-word')) {
             await element.classList.remove('hide-study-word');
+            await element.classList.add('study-word');
+
             event.srcElement.src ? event.srcElement.src = "assets/icon/baseline-visibility_off-24px.svg" : event.srcElement.firstChild.src = "assets/icon/baseline-visibility_off-24px.svg"
         } else {
+            await element.classList.remove('study-word');
             await element.classList.add('hide-study-word');
             event.srcElement.src ? event.srcElement.src = "assets/icon/outline-visibility-24px.svg" : event.srcElement.firstChild.src = "assets/icon/outline-visibility-24px.svg"
         }
@@ -71,7 +74,7 @@ export class AppVocabulary {
         // if (this.showFloatingMenu) { event.srcElement.src = "assets/icon/outline-cancel-24px.svg" } else {
         //     event.srcElement.src = "assets/icon/baseline-more_horiz-24px.svg";
         // }
-        event.srcElement.src = this.showFloatingMenu ? "assets/icon/outline-cancel-24px.svg" : "assets/icon/baseline-more_horiz-24px.svg";
+        event.srcElement.src = this.showFloatingMenu ? "assets/icon/outline-cancel-24px.svg" : "assets/icon/baseline-more_horiz-24px-2.svg";
         console.log("event el src XXXXX", event.srcElement.src)
 
         let element = await document.getElementById("floatingMenu")
@@ -84,14 +87,14 @@ export class AppVocabulary {
         // get/set coordinates of floating menu
         const bodyOffsets = document.body.getBoundingClientRect();
         const tempX = event.pageX - bodyOffsets.left;
-        const tempY = event.pageY + 5
+        const tempY = event.pageY - 32
         // if (element) {
         element.style.position = "fixed"
         element.style.top = tempY + "px"
         element.style.left = tempX + "px"
 
         if (reOpen) {
-            if (this.floatIcon) { this.floatIcon.src = "assets/icon/baseline-more_horiz-24px.svg" }
+            if (this.floatIcon) { this.floatIcon.src = "assets/icon/baseline-more_horiz-24px-2.svg" }
 
             this.showFloatingMenu = true
             console.log("event src ele src", event.srcElement.src)
@@ -139,13 +142,13 @@ export class AppVocabulary {
                                             {/* </ion-button> */}
                                         </div>
 
-                                        <h2>{word.word}</h2>
+                                        <div class="vocab-word">{word.word}</div>
                                     </ion-card>
                                 </ion-column>
 
                                 <ion-column>
                                     <ion-card padding>
-                                        <h2>{word.meaning}</h2>
+                                        <div class="vocab-word">{word.meaning}</div>
                                     </ion-card>
                                 </ion-column>
                             </ion-row>
