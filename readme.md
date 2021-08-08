@@ -1,7 +1,10 @@
 # Ionic PWA Toolkit Beta
 
+[![hackmd-github-sync-badge](https://hackmd.io/S3PbRYYZQD2GaLQ8cTLGhw/badge)](https://hackmd.io/S3PbRYYZQD2GaLQ8cTLGhw)
+
+
 The PWA Toolkit is a starting point for building Progressive Web Apps using Ionic and Stencil.
-This combination of tools gives you the ability to build a fast, efficient PWA out of the box.
+This combination of tools gives you the ability to build a fast, efficienrt PWA out of the box.
 
 Note: This project is **Beta** and uses a beta release of `@ionic/core`.
 
@@ -88,6 +91,8 @@ To run the unit tests and watch for file changes during development, run:
 ```bash
 npm run test.watch
 ```
+Not sure where the cursor went on the Pixelbook, but had to restart to get it back.
+
 
 ## Testing your PWA's performance
 
